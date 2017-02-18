@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -N speedyGA
+#PBS -q mini
+#PBS -l nodes=2:ppn=20                                             
+#PBS -j oe
+cd $PBS_O_WORKDIR
+export I_MPI_FABRICS=shm:dapl
+export I_MPI_MPD_TMPDIR=/scratch/gaurag
+matlab -nodisplay -r "speedyGA(8,150,0.25,0,'FINAL125to125m0'), exit"
